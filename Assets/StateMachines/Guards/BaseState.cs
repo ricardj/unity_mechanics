@@ -34,7 +34,6 @@ public class BaseState : StateMachineBehaviour
 			GameObject g = fow.visibleTargets[i];
 			if (g.tag == "Prisioner" && g.name != "Player")
 			{
-				Debug.Log(g.name);
 				PrisionerBehaviour prisionerBehaviour = g.GetComponent<PrisionerBehaviour>();
 				if (prisionerBehaviour.stateMachine.GetBool("fight"))
 				{
@@ -43,7 +42,14 @@ public class BaseState : StateMachineBehaviour
 				}
 
 			}
-		}
+            if (g.tag == "Prisioner" && g.name == "Player")
+            {
+                //We check if it is in Prohibited zone
+            }
+
+
+
+        }
 
 		if (sight_flag)
 		{
