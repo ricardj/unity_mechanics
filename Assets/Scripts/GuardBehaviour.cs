@@ -10,7 +10,7 @@ public class GuardBehaviour : MonoBehaviour
     FieldOfView fow;
     Animator stateMachine;
 
-    GameObject targetPrisioner;
+    public GameObject targetPrisioner;
 
     // Start is called before the first frame update
     void Start()
@@ -18,29 +18,13 @@ public class GuardBehaviour : MonoBehaviour
         transform = GetComponent<Transform>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.updateRotation = false;
-        fow = GetComponent<FieldOfView>();
-        stateMachine = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        //We process the things in our site.
-        int visibleTargetsCount = fow.visibleTargets.Count;
-        for (int i = 0; i < visibleTargetsCount; i++)
-        {
-            GameObject g = fow.visibleTargets[i];
-            if (g.tag == "Prisioner")
-            {
-                PrisionerBehaviour prisionerBehaviour = g.GetComponent<PrisionerBehaviour>();
-                if (prisionerBehaviour.fighting)
-                {
-                    targetPrisioner = g;
-                    stateMachine.SetBool("hunting", true);
-                }
-
-            }
-        }
+        
     }
 
     private void LateUpdate()

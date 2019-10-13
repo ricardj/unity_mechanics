@@ -8,12 +8,14 @@ public class PrisionerBehaviour : MonoBehaviour
 
     public bool fighting = false;
     public GameObject enemyPrisioner;
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
 
     private bool interactible = false;
     public Color shinnyColor;
     private Material material;
     private Color normalColor;
+
+    public Animator stateMachine;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +23,7 @@ public class PrisionerBehaviour : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         material = GetComponent<Renderer>().material;
         normalColor = material.color;
-            
+        stateMachine = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -31,7 +33,7 @@ public class PrisionerBehaviour : MonoBehaviour
         {
             if(Input.GetKeyDown("space"))
             {
-                fighting = true;
+                stateMachine.SetBool("fight", true);
             }
         }
     }
@@ -48,7 +50,7 @@ public class PrisionerBehaviour : MonoBehaviour
         //If another prisioner hits the prisioner and he is fighthing they will engage on fight
         if (col.gameObject.tag == "Prisioner")
         {
-            fighting = true;
+            stateMachine.SetBool("fight", true);
         }
         
     }

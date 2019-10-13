@@ -24,7 +24,7 @@ public class ProhibitedAreaBehaviour : MonoBehaviour
         if(collider.gameObject.tag == "Prisioner")
 		{
 			outRunPrisioners.Add(collider.gameObject);
-			number_of_outrun_prisioners++;
+			
 		}
 	}
 
@@ -33,7 +33,7 @@ public class ProhibitedAreaBehaviour : MonoBehaviour
         if(collider.gameObject.tag == "Prisioner")
 		{
 			outRunPrisioners.Remove(outRunPrisioners.Find(g => g.name == collider.gameObject.name));
-			number_of_outrun_prisioners--;
+			
         }
 	}
 }
